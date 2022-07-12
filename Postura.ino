@@ -28,10 +28,13 @@ void loop() {
   }
 
   getAccelerometer(accReading.axes);
-  accelerometer.writeValue(accReading.bytes, 12);
+  accelerometer1.writeValue(accReading1.bytes, 12);
 
   getGyroscope(gyroReading.axes);
-  gyroscope.writeValue(gyroReading.bytes, 12);
+  gyroscope1.writeValue(gyroReading1.bytes, 12);
 
-  flexSensor1.writeValue();
+  getExternalAccelerometer(accReading2.axes);
+  accelerometer2.writeValue(accReading2.bytes, 12);
+
+  flexSensor1.writeValue(getFlexSensor1());
 }
