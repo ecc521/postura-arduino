@@ -16,4 +16,8 @@ void getExternalAccelerometer(float axes[3]) {
   float xg = (float)x/(-100.00);
   float yg = (float)y/(-100.00);
   float zg = (float)z/(100.00);
+
+  axes[0] = xg;
+  axes[1] = yg;
+  axes[2] = zg;
 }
