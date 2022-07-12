@@ -3,9 +3,9 @@ int ypin = A1;
 int zpin = A2; 
 
 void getExternalAccelerometer(float axes[3]) {
-  int xReading = analogRead(xpin)
-  int yReading = analogRead(ypin)
-  int zReading = analogRead(zpin)
+  int xReading = analogRead(xpin);
+  int yReading = analogRead(ypin);
+  int zReading = analogRead(zpin);
 
   //Map the calibrated analog values. 
   int x = map(xvalue, 411, 610, -100, 100);
