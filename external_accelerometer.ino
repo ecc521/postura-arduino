@@ -8,13 +8,12 @@ void getExternalAccelerometer(float axes[3]) {
   int zReading = analogRead(zpin);
 
   //Map the calibrated analog values. 
-  int x = map(xvalue, 411, 610, -100, 100);
-  int y = map(yvalue, 413, 615, -100, 100);
-  int z = map(zvalue, 422, 574, -100, 100);
+  int x = map(xReading, 411, 610, -100, 100);
+  int y = map(yReading, 413, 615, -100, 100);
+  int z = map(zReading, 422, 574, -100, 100);
 
   //Convert to g's
   float xg = (float)x/(-100.00);
   float yg = (float)y/(-100.00);
   float zg = (float)z/(100.00);
-
 }
