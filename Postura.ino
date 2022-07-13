@@ -84,8 +84,8 @@ void loop() {
     digitalWrite(vibrationMotor, HIGH);
   }
 
-  getAccelerometer(accReading.axes);
-  getGyroscope(gyroReading.axes);
+  getAccelerometer(accReading1.axes);
+  getGyroscope(gyroReading1.axes);
   getExternalAccelerometer(accReading2.axes);
 
   accelerometer1.writeValue(accReading1.bytes, 12);
