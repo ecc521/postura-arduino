@@ -2,7 +2,6 @@
 
 void setupIMU() {
   if (!IMU.begin()) {
-    Serial.println("Failed to initialize IMU!");
     while (1);
   }
 }

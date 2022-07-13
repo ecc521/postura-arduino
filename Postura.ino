@@ -35,7 +35,6 @@ BLEByteCharacteristic vibration("0cfbadd9-2593-4b4e-9bb6-1a459c706040", BLERead 
 
 void setupBLE() {
     if (!BLE.begin()) {
-    Serial.println("starting Bluetooth® Low Energy module failed!");
     while (1);
   }
 
@@ -53,14 +52,9 @@ void setupBLE() {
   BLE.addService(posturaService);
 
   BLE.advertise();
-
-  Serial.println("starting Bluetooth® advertising!");
 }
 
 void setup() {
-  Serial.begin(9600);
-  while (!Serial);
-
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(vibrationMotor, OUTPUT);
 
