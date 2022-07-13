@@ -30,7 +30,7 @@ BLECharacteristic gyroscope1("0cfbadd9-2593-4b4e-9bb6-1a459c706020", BLERead | B
 //Flex sensor characteristics. Degrees bend, integer. 
 BLEByteCharacteristic flexSensor1("0cfbadd9-2593-4b4e-9bb6-1a459c706030", BLERead | BLENotify);
 
-//Vibration motor. Actually a boolean (0 for off, 1 for on). 
+//Vibration motor. Off is 0, anything else is on. 
 BLEByteCharacteristic vibration("0cfbadd9-2593-4b4e-9bb6-1a459c706040", BLERead | BLEWrite);
 
 void setupBLE() {
@@ -75,22 +75,21 @@ void setup() {
 void loop() {
   BLE.poll();
 
-  if (vibration.value()) {
-    //Turn vibration on. 
-    digitalWrite(vibrationMotor, HIGH);
-  }
-  else {
+  if (vibration.value() == 0) {
     //Turn vibration off. 
     digitalWrite(vibrationMotor, LOW);
   }
+  else {
+    //Turn vibration on. 
+    digitalWrite(vibrationMotor, HIGH);
+  }
 
-  getAccelerometer(accReading1.axes);
-  accelerometer1.writeValue(accReading1.bytes, 12);
-
-  getGyroscope(gyroReading1.axes);
-  gyroscope1.writeValue(gyroReading1.bytes, 12);
-
+  getAccelerometer(accReading.axes);
+  getGyroscope(gyroReading.axes);
   getExternalAccelerometer(accReading2.axes);
+
+  accelerometer1.writeValue(accReading1.bytes, 12);
+  gyroscope1.writeValue(gyroReading1.bytes, 12);
   accelerometer2.writeValue(accReading2.bytes, 12);
 
   flexSensor1.writeValue(getFlexSensor1());
