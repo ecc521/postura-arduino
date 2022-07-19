@@ -97,4 +97,6 @@ void loop() {
   
   DataItem latestReading = getLatestReading();
   updateCharacteristics(latestReading);
+
+  delay(200); //Reduce data rate. 
 }
