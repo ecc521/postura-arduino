@@ -26,7 +26,6 @@ struct DataItem {
   byte flex1;
 };
 
-std::vector<DataItem> dataBuffer;
 
 DataItem getLatestReading() {
   DataItem reading;
@@ -35,8 +34,8 @@ DataItem getLatestReading() {
   getGyroscope(reading.gyro1.axes);
   getExternalAccelerometer(reading.acc2.axes);
   reading.flex1 = getFlexSensor1();
+  return reading;
 }
-
 
 BLEService posturaService("0cfbadd9-2593-4b4e-9bb6-1a459c706000");
 BLECharacteristic accelerometer1("0cfbadd9-2593-4b4e-9bb6-1a459c706010", BLERead | BLENotify, 12, true);
@@ -95,7 +94,7 @@ void loop() {
     //Turn vibration on. 
     digitalWrite(vibrationMotor, HIGH);
   }
-
+  
   DataItem latestReading = getLatestReading();
   updateCharacteristics(latestReading);
 }
